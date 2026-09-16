@@ -1,0 +1,1643 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09090b" />
+  <meta
+    name="description"
+    content="Maces — Automatización y soluciones digitales para negocios locales."
+  />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Maces — Soluciones Digitales y Automatización" />
+  <meta
+    property="og:description"
+    content="Elimina los procesos manuales y automatiza tu negocio local hoy."
+  />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="/preview-maces.jpg" />
+  <meta property="og:image:alt" content="Maces — Soluciones Digitales y Automatización" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Maces — Soluciones Digitales y Automatización" />
+  <meta
+    name="twitter:description"
+    content="Elimina los procesos manuales y automatiza tu negocio local hoy."
+  />
+  <meta name="twitter:image" content="/preview-maces.jpg" />
+
+  <title>Maces — Erradicamos los procesos manuales</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            wine: "#800020",
+            "wine-dark": "#4a0013",
+            abyss: "#09090b"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* =========================================================
+       BASE
+    ========================================================= */
+
+    html {
+      scroll-behavior: smooth;
+      background: #09090b;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(
+          circle at 75% 10%,
+          rgba(128, 0, 32, 0.10),
+          transparent 30rem
+        ),
+        #09090b;
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #800020;
+      color: white;
+    }
+
+    /* =========================================================
+       CUSTOM SCROLLBAR
+    ========================================================= */
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #800020;
+      border-radius: 999px;
+    }
+
+    /* =========================================================
+       AMBIENT BACKGROUND
+    ========================================================= */
+
+    .ambient {
+      position: absolute;
+      border-radius: 9999px;
+      pointer-events: none;
+      filter: blur(90px);
+      opacity: 0.35;
+      will-change: transform;
+    }
+
+    .ambient-wine {
+      background: #800020;
+    }
+
+    .ambient-white {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .nav-glass {
+      background: rgba(9, 9, 11, 0.60);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero-title {
+      font-size: clamp(4rem, 11vw, 11.5rem);
+      line-height: 0.82;
+      letter-spacing: -0.075em;
+    }
+
+    .outline-text {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.42);
+    }
+
+    /* =========================================================
+       GLASS CARDS
+    ========================================================= */
+
+    .glass-card {
+      position: relative;
+      isolation: isolate;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.085),
+          rgba(255, 255, 255, 0.025)
+        );
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 30px 80px rgba(0, 0, 0, 0.22);
+      transform-style: preserve-3d;
+      transition:
+        border-color 0.45s ease,
+        box-shadow 0.45s ease,
+        background 0.45s ease;
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        135deg,
+        rgba(128, 0, 32, 0),
+        rgba(128, 0, 32, 0),
+        rgba(255, 255, 255, 0.04)
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(128, 0, 32, 0.70);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(128, 0, 32, 0.16),
+          rgba(255, 255, 255, 0.035)
+        );
+      box-shadow:
+        0 30px 100px rgba(128, 0, 32, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    }
+
+    .glass-card:hover::before {
+      opacity: 1;
+    }
+
+    /* =========================================================
+       SERVICE NUMBER
+    ========================================================= */
+
+    .service-number {
+      font-size: clamp(4rem, 8vw, 8rem);
+      line-height: 0.8;
+      letter-spacing: -0.08em;
+      color: rgba(255, 255, 255, 0.045);
+      font-weight: 900;
+    }
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .magnetic-button {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .magnetic-button::before {
+      content: "";
+      position: absolute;
+      inset: -100%;
+      z-index: -1;
+      background: radial-gradient(
+        circle,
+        rgba(128, 0, 32, 0.35),
+        transparent 45%
+      );
+      transform: scale(0);
+      transition: transform 0.6s ease;
+    }
+
+    .magnetic-button:hover::before {
+      transform: scale(1);
+    }
+
+    /* =========================================================
+       DECORATIVE LINE
+    ========================================================= */
+
+    .wine-line {
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        #800020,
+        rgba(128, 0, 32, 0.1),
+        transparent
+      );
+    }
+
+    /* =========================================================
+       MARQUEE
+    ========================================================= */
+
+    .marquee {
+      display: flex;
+      width: max-content;
+      white-space: nowrap;
+      animation: marquee 28s linear infinite;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =========================================================
+       CUSTOM CURSOR
+    ========================================================= */
+
+    .cursor {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      pointer-events: none;
+      z-index: 99999;
+      mix-blend-mode: difference;
+      transform: translate(-50%, -50%);
+      display: block;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      display: block;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    @media (pointer: fine) {
+      body {
+        cursor: none;
+      }
+
+      a,
+      button,
+      input,
+      label,
+      summary {
+        cursor: none;
+      }
+    }
+
+
+    /* =========================================================
+       WHATSAPP FLOATING CTA
+    ========================================================= */
+
+    .whatsapp-float {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      z-index: 60;
+      width: 3.75rem;
+      height: 3.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 18px 50px rgba(37, 211, 102, 0.28);
+    }
+
+    .whatsapp-float:focus-visible {
+      outline-color: #25d366;
+    }
+
+    @media (max-width: 640px) {
+      .whatsapp-float {
+        right: 1rem;
+        bottom: 1rem;
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+    }
+
+    /* =========================================================
+       QUALIFICATION FORM
+    ========================================================= */
+
+    .qualification-option {
+      position: relative;
+    }
+
+    .qualification-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .qualification-option label {
+      display: block;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.025);
+      border-radius: 1rem;
+      padding: 1rem 1.1rem;
+      color: #a1a1aa;
+      transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .qualification-option label:hover {
+      border-color: rgba(128, 0, 32, 0.65);
+      background: rgba(128, 0, 32, 0.08);
+      color: #fff;
+    }
+
+    .qualification-option input:checked + label {
+      border-color: rgba(128, 0, 32, 0.95);
+      background: rgba(128, 0, 32, 0.16);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(128, 0, 32, 0.25);
+    }
+
+    .qualification-option input:focus-visible + label {
+      outline: 2px solid #fff;
+      outline-offset: 4px;
+    }
+
+    /* =========================================================
+       FAQ
+    ========================================================= */
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary .faq-icon {
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item[open] summary .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* =========================================================
+       ACCESSIBILITY
+    ========================================================= */
+
+    :focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 5px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const MACES_SUPABASE_URL = 'https://sgkowzmfmedldznnnygs.supabase.co';
+  const MACES_SUPABASE_KEY = 'sb_publishable_eAJ0XteDHSj6yLkSfKagQQ_AL_EDSvi';
+  const macesSupabase = window.supabase.createClient(
+    MACES_SUPABASE_URL,
+    MACES_SUPABASE_KEY
+  );
+</script>
+
+</head>
+
+<body>
+
+  <!-- =======================================================
+       CUSTOM CURSOR
+  ======================================================== -->
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- =======================================================
+       NAVIGATION
+  ======================================================== -->
+
+  <header class="fixed top-0 left-0 z-50 w-full px-4 pt-4 sm:px-6 lg:px-8">
+    <nav
+      class="nav-glass mx-auto flex max-w-7xl items-center justify-between rounded-full px-5 py-3"
+      aria-label="Navegación principal"
+    >
+      <a
+        href="#inicio"
+        class="text-xl font-black tracking-[-0.06em]"
+        aria-label="Maces — Inicio"
+      >
+        MACES<span class="text-[#800020]">.</span>
+      </a>
+
+      <div class="hidden items-center gap-8 text-xs font-medium text-zinc-400 md:flex">
+        <a class="transition hover:text-white" href="#soluciones">Soluciones</a>
+        <a class="transition hover:text-white" href="#sinergia">Nosotros</a>
+        <a class="transition hover:text-white" href="#contacto">Contacto</a>
+      </div>
+
+      <a
+        href="#contacto"
+        class="rounded-full bg-white px-4 py-2 text-xs font-bold text-black transition duration-300 hover:bg-[#800020] hover:text-white"
+      >
+        Hablemos
+      </a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section
+      id="inicio"
+      class="relative flex min-h-screen items-center overflow-hidden px-5 pb-24 pt-32 sm:px-8 lg:px-12"
+    >
+
+      <!-- Ambient lights -->
+      <div
+        class="ambient ambient-wine parallax absolute -right-40 top-20 h-[30rem] w-[30rem]"
+        data-speed="0.18"
+      ></div>
+
+      <div
+        class="ambient ambient-wine absolute bottom-[-10rem] left-[-10rem] h-[25rem] w-[25rem]"
+      ></div>
+
+      <div
+        class="ambient ambient-white absolute right-[30%] top-[35%] h-[15rem] w-[15rem]"
+      ></div>
+
+      <div class="relative z-10 mx-auto w-full max-w-[1600px]">
+
+        <div class="mb-8 flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-zinc-500 hero-reveal">
+          <span class="h-px w-12 bg-[#800020]"></span>
+          Automatización / IA / Sistemas
+        </div>
+
+        <h1 class="hero-title max-w-[1400px] font-black uppercase">
+          <span class="hero-line block">Erradicamos</span>
+
+          <span class="hero-line outline-text ml-[7vw] block">
+            los procesos
+          </span>
+
+          <span class="hero-line block text-white">
+            manuales<span class="text-[#800020]">.</span>
+          </span>
+        </h1>
+
+        <div class="mt-14 grid grid-cols-1 gap-10 md:grid-cols-12">
+
+          <div class="md:col-span-5 md:col-start-7 hero-reveal">
+            <p class="max-w-xl text-base leading-8 text-zinc-400 sm:text-lg">
+              Ayudamos a clínicas y restaurantes a eliminar tareas repetitivas,
+              automatizar su operación y escalar sin inversiones inalcanzables.
+            </p>
+
+            <div class="mt-8">
+              <a
+                href="#contacto"
+                class="magnetic-button inline-flex items-center gap-4 rounded-full bg-white px-7 py-4 text-sm font-bold text-black transition-all duration-500 hover:bg-[#800020] hover:text-white"
+              >
+                Conoce cómo podemos ayudarte
+                <span class="text-lg">→</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Floating visual -->
+        <div
+          class="hero-orb absolute right-[3%] top-[32%] hidden h-32 w-32 rounded-full border border-white/10 bg-gradient-to-br from-white/10 to-[#800020]/30 shadow-[0_0_100px_rgba(128,0,32,0.3)] lg:block"
+          data-speed="-0.25"
+        >
+          <div class="absolute inset-5 rounded-full border border-white/10"></div>
+          <div class="absolute inset-10 rounded-full bg-[#800020]/70 blur-md"></div>
+        </div>
+
+      </div>
+
+      <!-- Bottom indicator -->
+      <div class="absolute bottom-8 left-5 flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] text-zinc-600 sm:left-8">
+        <span class="h-8 w-px bg-[#800020]"></span>
+        Scroll para explorar
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         MARQUEE
+    ====================================================== -->
+
+    <div class="overflow-hidden border-y border-white/[0.06] py-6">
+      <div class="marquee text-sm font-bold uppercase tracking-[0.35em] text-zinc-600">
+        <span class="mx-8">Automatización</span>
+        <span class="mx-8 text-[#800020]">✦</span>
+        <span class="mx-8">Inteligencia Artificial</span>
+        <span class="mx-8 text-[#800020]">✦</span>
+        <span class="mx-8">Sistemas Digitales</span>
+        <span class="mx-8 text-[#800020]">✦</span>
+        <span class="mx-8">Automatización</span>
+        <span class="mx-8 text-[#800020]">✦</span>
+        <span class="mx-8">Inteligencia Artificial</span>
+        <span class="mx-8 text-[#800020]">✦</span>
+        <span class="mx-8">Sistemas Digitales</span>
+        <span class="mx-8 text-[#800020]">✦</span>
+      </div>
+    </div>
+
+    <!-- =====================================================
+         SOLUTIONS
+    ====================================================== -->
+
+    <section
+      id="soluciones"
+      class="relative overflow-hidden px-5 py-32 sm:px-8 lg:px-12 lg:py-48"
+    >
+
+      <div class="mx-auto max-w-[1500px]">
+
+        <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+
+          <div class="lg:col-span-5">
+            <div class="section-reveal sticky top-32">
+              <div class="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[#800020]">
+                <span>01</span>
+                <span class="h-px w-10 bg-[#800020]"></span>
+              </div>
+
+              <h2 class="text-5xl font-black leading-[0.9] tracking-[-0.06em] sm:text-7xl lg:text-8xl">
+                Un ecosistema.
+                <span class="block text-zinc-600">Menos fricción.</span>
+              </h2>
+
+              <p class="mt-8 max-w-md text-sm leading-7 text-zinc-500 sm:text-base">
+                Diseñamos sistemas que conectan las piezas de tu operación para
+                que tu equipo pueda concentrarse en lo que realmente importa.
+              </p>
+            </div>
+          </div>
+
+          <!-- Asymmetric cards -->
+          <div class="space-y-8 lg:col-span-7">
+
+            <!-- Card 01 -->
+            <article
+              class="glass-card service-card group min-h-[390px] overflow-hidden rounded-[2rem] p-7 sm:p-10 lg:ml-16"
+              data-card
+            >
+              <div class="absolute -right-8 -top-8 service-number">01</div>
+
+              <div class="relative flex h-full flex-col justify-between">
+
+                <div>
+                  <span class="mb-10 inline-block rounded-full border border-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+                    Control
+                  </span>
+
+                  <h3 class="max-w-lg text-4xl font-bold tracking-[-0.04em] sm:text-5xl">
+                    Gestión y Control
+                  </h3>
+
+                  <p class="mt-5 max-w-lg text-sm leading-7 text-zinc-400">
+                    Ahorra hasta 15 horas a la semana eliminando el papel en tu
+                    consultorio o restaurante en Barinas.
+                  </p>
+                </div>
+
+                <div class="mt-12 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-white/5 px-3 py-2 text-xs text-zinc-400">Consultorios</span>
+                  <span class="rounded-full bg-white/5 px-3 py-2 text-xs text-zinc-400">Restaurantes</span>
+                  <span class="rounded-full bg-white/5 px-3 py-2 text-xs text-zinc-400">Barinas</span>
+                </div>
+
+              </div>
+            </article>
+
+            <!-- Card 02 -->
+            <article
+              class="glass-card service-card group min-h-[430px] overflow-hidden rounded-[2rem] p-7 sm:p-10 lg:-mr-16 lg:ml-[-3rem]"
+              data-card
+            >
+              <div class="absolute -right-8 -top-8 service-number">02</div>
+
+              <div class="relative flex h-full flex-col justify-between">
+
+                <div>
+                  <span class="mb-10 inline-block rounded-full border border-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+                    Atención
+                  </span>
+
+                  <h3 class="max-w-xl text-4xl font-bold tracking-[-0.04em] sm:text-5xl">
+                    Automatización de Atención
+                  </h3>
+
+                  <p class="mt-5 max-w-xl text-sm leading-7 text-zinc-400">
+                    Responde consultas, toma citas o pedidos y captura clientes
+                    por WhatsApp 24/7, incluso fuera del horario de atención.
+                  </p>
+                </div>
+
+                <div class="mt-12">
+                  <div class="flex items-center gap-3">
+                    <span class="h-2 w-2 animate-pulse rounded-full bg-green-500"></span>
+                    <span class="text-xs text-zinc-500">Sistema activo 24/7</span>
+                  </div>
+
+                  <div class="mt-4 h-px w-full bg-gradient-to-r from-[#800020] to-transparent"></div>
+                </div>
+
+              </div>
+            </article>
+
+            <!-- Card 03 -->
+            <article
+              class="glass-card service-card group min-h-[400px] overflow-hidden rounded-[2rem] p-7 sm:p-10 lg:ml-24"
+              data-card
+            >
+              <div class="absolute -right-8 -top-8 service-number">03</div>
+
+              <div class="relative flex h-full flex-col justify-between">
+
+                <div>
+                  <span class="mb-10 inline-block rounded-full border border-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+                    Descubrimiento
+                  </span>
+
+                  <h3 class="max-w-lg text-4xl font-bold tracking-[-0.04em] sm:text-5xl">
+                    Posicionamiento Local
+                  </h3>
+
+                  <p class="mt-5 max-w-lg text-sm leading-7 text-zinc-400">
+                    Haz que tu clínica o restaurante en Barinas sea más fácil de
+                    encontrar cuando un cliente cercano busca lo que ofreces.
+                  </p>
+                </div>
+
+                <div class="mt-12 flex items-center gap-4">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-xs">
+                    G
+                  </div>
+                  <span class="text-xs text-zinc-500">Presencia local →</span>
+                </div>
+
+              </div>
+            </article>
+
+            <!-- Card 04 -->
+            <article
+              class="glass-card service-card group min-h-[390px] overflow-hidden rounded-[2rem] p-7 sm:p-10 lg:-mr-8 lg:ml-[-2rem]"
+              data-card
+            >
+              <div class="absolute -right-8 -top-8 service-number">04</div>
+
+              <div class="relative flex h-full flex-col justify-between">
+
+                <div>
+                  <span class="mb-10 inline-block rounded-full border border-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+                    Experiencia
+                  </span>
+
+                  <h3 class="max-w-xl text-4xl font-bold tracking-[-0.04em] sm:text-5xl">
+                    Interacción Digital
+                  </h3>
+
+                  <p class="mt-5 max-w-xl text-sm leading-7 text-zinc-400">
+                    Menú QR, información y accesos digitales para que tus clientes
+                    consulten lo que necesitan sin esperar al personal.
+                  </p>
+                </div>
+
+                <div class="mt-12 grid grid-cols-3 gap-2">
+                  <div class="h-12 rounded-xl border border-white/10 bg-white/[0.03]"></div>
+                  <div class="h-12 rounded-xl border border-[#800020]/50 bg-[#800020]/10"></div>
+                  <div class="h-12 rounded-xl border border-white/10 bg-white/[0.03]"></div>
+                </div>
+
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         TRANSITION
+    ====================================================== -->
+
+    <section class="relative overflow-hidden py-24">
+
+      <div class="absolute left-0 top-1/2 h-px w-full bg-white/[0.06]"></div>
+
+      <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+
+        <div class="grid grid-cols-2 items-center gap-8 text-center sm:grid-cols-4">
+
+          <div class="stat-item">
+            <div class="text-4xl font-black tracking-[-0.06em] sm:text-6xl">24/7</div>
+            <div class="mt-2 text-[10px] uppercase tracking-[0.25em] text-zinc-600">
+              Automatización
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="text-4xl font-black tracking-[-0.06em] sm:text-6xl">01</div>
+            <div class="mt-2 text-[10px] uppercase tracking-[0.25em] text-zinc-600">
+              Ecosistema
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="text-4xl font-black tracking-[-0.06em] sm:text-6xl">∞</div>
+            <div class="mt-2 text-[10px] uppercase tracking-[0.25em] text-zinc-600">
+              Posibilidades
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="text-4xl font-black tracking-[-0.06em] sm:text-6xl">AI</div>
+            <div class="mt-2 text-[10px] uppercase tracking-[0.25em] text-zinc-600">
+              Inteligencia
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         SYNERGY
+    ====================================================== -->
+
+    <section
+      id="sinergia"
+      class="relative overflow-hidden px-5 py-32 sm:px-8 lg:px-12 lg:py-48"
+    >
+
+      <div
+        class="ambient ambient-wine absolute left-[-15rem] top-[20%] h-[35rem] w-[35rem]"
+      ></div>
+
+      <div class="mx-auto max-w-[1500px]">
+
+        <div class="mb-20 max-w-4xl section-reveal">
+
+          <div class="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[#800020]">
+            <span>02</span>
+            <span class="h-px w-10 bg-[#800020]"></span>
+            Sinergia operativa
+          </div>
+
+          <h2 class="text-5xl font-black leading-[0.88] tracking-[-0.065em] sm:text-7xl lg:text-[8rem]">
+            Dos motores.
+            <span class="block text-zinc-600">Una operación</span>
+            <span class="block">más inteligente<span class="text-[#800020]">.</span></span>
+          </h2>
+
+        </div>
+
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+
+          <!-- Technical -->
+          <article
+            class="glass-card synergy-card min-h-[520px] rounded-[2rem] p-8 sm:p-12"
+          >
+            <div class="flex h-full flex-col justify-between">
+
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs uppercase tracking-[0.25em] text-zinc-600">
+                    Dirección técnica
+                  </span>
+
+                  <span class="text-xs text-[#800020]">01 / 02</span>
+                </div>
+
+                <div class="mt-24">
+                  <p class="text-sm uppercase tracking-[0.2em] text-zinc-600">
+                    Arquitectura
+                  </p>
+
+                  <h3 class="mt-3 text-5xl font-black tracking-[-0.06em] sm:text-7xl">
+                    IA<span class="text-[#800020]">.</span>
+                  </h3>
+                </div>
+              </div>
+
+              <div>
+                <div class="wine-line mb-6 w-full"></div>
+
+                <p class="max-w-md text-sm leading-7 text-zinc-500">
+                  Convertimos problemas operativos en sistemas, automatizaciones
+                  e infraestructura digital diseñados alrededor de tu negocio.
+                </p>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- Commercial -->
+          <article
+            class="glass-card synergy-card min-h-[520px] rounded-[2rem] p-8 sm:p-12 lg:mt-24"
+          >
+            <div class="flex h-full flex-col justify-between">
+
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs uppercase tracking-[0.25em] text-zinc-600">
+                    Dirección comercial
+                  </span>
+
+                  <span class="text-xs text-[#800020]">02 / 02</span>
+                </div>
+
+                <div class="mt-24">
+                  <p class="text-sm uppercase tracking-[0.2em] text-zinc-600">
+                    Estrategia
+                  </p>
+
+                  <h3 class="mt-3 text-5xl font-black tracking-[-0.06em] sm:text-7xl">
+                    Ventas<span class="text-[#800020]">.</span>
+                  </h3>
+                </div>
+              </div>
+
+              <div>
+                <div class="wine-line mb-6 w-full"></div>
+
+                <p class="max-w-md text-sm leading-7 text-zinc-500">
+                  Conectamos las soluciones con objetivos comerciales,
+                  posicionamiento y crecimiento para que la tecnología tenga
+                  un impacto real en el negocio.
+                </p>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         FAQ / TRUST
+    ====================================================== -->
+
+    <section
+      id="faq"
+      class="relative overflow-hidden px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
+    >
+      <div class="mx-auto max-w-[1200px]">
+
+        <div class="mb-14 max-w-3xl section-reveal">
+          <div class="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[#800020]">
+            <span>04</span>
+            <span class="h-px w-10 bg-[#800020]"></span>
+            Confianza
+          </div>
+
+          <h2 class="text-5xl font-black leading-[0.9] tracking-[-0.06em] sm:text-7xl">
+            Preguntas
+            <span class="text-zinc-600">frecuentes.</span>
+          </h2>
+        </div>
+
+        <div class="glass-card overflow-hidden rounded-[2rem] px-6 sm:px-10">
+
+          <details class="faq-item py-6">
+            <summary class="flex items-center justify-between gap-6 text-base font-bold sm:text-lg">
+              ¿Cuánto tarda la implementación?
+              <span class="faq-icon shrink-0 text-2xl font-normal text-[#800020]">+</span>
+            </summary>
+            <p class="max-w-3xl pt-4 text-sm leading-7 text-zinc-500">
+              En menos de 7 días, según el alcance de la solución que necesite tu negocio.
+            </p>
+          </details>
+
+          <details class="faq-item py-6">
+            <summary class="flex items-center justify-between gap-6 text-base font-bold sm:text-lg">
+              ¿Necesito saber de computación?
+              <span class="faq-icon shrink-0 text-2xl font-normal text-[#800020]">+</span>
+            </summary>
+            <p class="max-w-3xl pt-4 text-sm leading-7 text-zinc-500">
+              No. Te entregamos el sistema listo para operar y te acompañamos durante la puesta en marcha.
+            </p>
+          </details>
+
+          <details class="faq-item py-6">
+            <summary class="flex items-center justify-between gap-6 text-base font-bold sm:text-lg">
+              ¿Tengo soporte?
+              <span class="faq-icon shrink-0 text-2xl font-normal text-[#800020]">+</span>
+            </summary>
+            <p class="max-w-3xl pt-4 text-sm leading-7 text-zinc-500">
+              Sí. Incluimos acompañamiento mensual continuo para ayudarte a mantener y mejorar la solución.
+            </p>
+          </details>
+
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 gap-3 text-xs text-zinc-500 sm:grid-cols-3">
+          <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
+            <div class="mb-2 text-lg text-white">7 días</div>
+            Implementación según alcance.
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
+            <div class="mb-2 text-lg text-white">Listo para operar</div>
+            Sin conocimientos técnicos avanzados.
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
+            <div class="mb-2 text-lg text-white">Acompañamiento</div>
+            Soporte mensual continuo.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================
+         FINAL STATEMENT
+    ====================================================== -->
+
+    <section class="relative overflow-hidden px-5 py-32 sm:px-8 lg:py-48">
+
+      <div
+        class="ambient ambient-wine absolute left-1/2 top-1/2 h-[35rem] w-[35rem] -translate-x-1/2 -translate-y-1/2 opacity-20"
+      ></div>
+
+      <div class="relative mx-auto max-w-6xl text-center">
+
+        <p class="mb-8 text-xs uppercase tracking-[0.4em] text-zinc-600 section-reveal">
+          El siguiente proceso que desaparece puede ser el tuyo.
+        </p>
+
+        <h2 class="text-6xl font-black leading-[0.85] tracking-[-0.07em] sm:text-8xl lg:text-[10rem] section-reveal">
+          Menos
+          <span class="text-zinc-600">manual.</span>
+          <br />
+          Más
+          <span class="text-[#800020]">Maces.</span>
+        </h2>
+
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CONTACT / CTA
+    ====================================================== -->
+
+    <section
+      id="contacto"
+      class="relative overflow-hidden px-5 pb-20 sm:px-8 lg:px-12"
+    >
+
+      <div class="mx-auto max-w-[1500px]">
+
+        <div
+          class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-8 sm:p-14 lg:p-20"
+        >
+
+          <div
+            class="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[#800020]/30 blur-[100px]"
+          ></div>
+
+          <div class="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
+
+            <div class="lg:col-span-8">
+
+              <div class="mb-6 text-xs uppercase tracking-[0.3em] text-[#800020]">
+                03 / Empecemos
+              </div>
+
+              <h2 class="max-w-5xl text-5xl font-black leading-[0.88] tracking-[-0.065em] sm:text-7xl lg:text-8xl">
+                ¿Qué proceso
+                <span class="text-zinc-600">eliminamos</span>
+                primero?
+              </h2>
+
+            </div>
+
+            <div class="lg:col-span-4">
+
+              <p class="mb-7 text-sm leading-7 text-zinc-500">
+                Cuéntanos qué está frenando tu operación. Selecciona la opción
+                que más se parezca a tu necesidad y te llevaremos directo a
+                WhatsApp con el contexto listo.
+              </p>
+
+              <form id="qualification-form" class="space-y-3">
+                <div class="maces-lead-fields grid gap-3 mb-5">
+                  <input id="lead-name" name="name" type="text" required
+                    placeholder="Tu nombre"
+                    autocomplete="name"
+                    class="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-orange-400">
+                  <input id="lead-business" name="business_name" type="text" required
+                    placeholder="Nombre de tu negocio"
+                    autocomplete="organization"
+                    class="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-orange-400">
+                  <input id="lead-whatsapp" name="whatsapp" type="tel" required
+                    placeholder="Tu WhatsApp"
+                    autocomplete="tel"
+                    class="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-orange-400">
+                </div>
+
+                <fieldset>
+                  <legend class="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+                    ¿Qué quieres automatizar?
+                  </legend>
+
+                  <div class="space-y-3">
+                    <div class="qualification-option">
+                      <input
+                        id="need-clinic"
+                        type="radio"
+                        name="need"
+                        value="Quiero digitalizar y automatizar la operación de mi negocio"
+                        required
+                      />
+                      <label for="need-clinic">
+                        Quiero digitalizar y automatizar la operación de mi negocio
+                      </label>
+                    </div>
+
+                    <div class="qualification-option">
+                      <input
+                        id="need-restaurant"
+                        type="radio"
+                        name="need"
+                        value="Quiero automatizar atención, ventas y seguimiento"
+                      />
+                      <label for="need-restaurant">
+                        Quiero automatizar atención, ventas y seguimiento
+                      </label>
+                    </div>
+
+                    <div class="qualification-option">
+                      <input
+                        id="need-whatsapp"
+                        type="radio"
+                        name="need"
+                        value="Quiero ordenar procesos, cobros y operaciones"
+                      />
+                      <label for="need-whatsapp">
+                        Quiero ordenar procesos, cobros y operaciones
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <button
+                  type="submit"
+                  class="magnetic-button mt-5 inline-flex w-full items-center justify-between rounded-full bg-white px-6 py-5 text-sm font-bold text-black transition-all duration-500 hover:bg-[#800020] hover:text-white"
+                >
+                  Continuar por WhatsApp
+                  <span class="text-xl">↗</span>
+                </button>
+
+                <p id="qualification-status" class="min-h-5 text-xs text-zinc-600" aria-live="polite"></p>
+                <p class="mt-4 text-xs text-zinc-600">
+                  WhatsApp directo: <a href="https://wa.me/584126356150?text=Hola%20Maces,%20me%20interesa%20automatizar%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="text-zinc-400 transition hover:text-white">0412-6356150</a>
+                </p>
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer class="px-5 pb-8 pt-16 sm:px-8 lg:px-12">
+
+    <div class="mx-auto max-w-[1500px]">
+
+      <div class="wine-line mb-8"></div>
+
+      <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
+
+        <div>
+          <div class="text-2xl font-black tracking-[-0.06em]">
+            MACES<span class="text-[#800020]">.</span>
+          </div>
+
+          <p class="mt-2 text-xs text-zinc-700">
+            Automatización y soluciones digitales.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
+          <a
+            href="https://www.instagram.com/maces_ven?stkn=czQyNml2cHFucmVo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full border border-white/10 px-4 py-2 transition hover:border-[#800020] hover:text-white"
+            aria-label="Instagram de Maces"
+          >
+            Instagram
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@maces_ven?_r=1&_t=ZS-99lvzAZQhZC"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full border border-white/10 px-4 py-2 transition hover:border-[#800020] hover:text-white"
+            aria-label="TikTok de Maces"
+          >
+            TikTok
+          </a>
+
+          <a
+            href="https://wa.me/584126356150?text=Hola%20Maces,%20me%20interesa%20automatizar%20mi%20negocio."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full border border-white/10 px-4 py-2 transition hover:border-[#800020] hover:text-white"
+            aria-label="WhatsApp de Maces"
+          >
+            WhatsApp
+          </a>
+        </div>
+
+        <div class="text-[10px] uppercase tracking-[0.2em] text-zinc-700">
+          © 2026 Maces. Todos los derechos reservados.
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- =======================================================
+       JAVASCRIPT / GSAP
+  ======================================================== -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const prefersReducedMotion =
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* =====================================================
+         CUSTOM CURSOR — ACTIVO EN DESKTOP
+      ====================================================== */
+
+      const cursor = document.querySelector(".cursor");
+      const cursorRing = document.querySelector(".cursor-ring");
+      const finePointer = window.matchMedia("(pointer: fine)").matches;
+
+      if (finePointer && cursor && cursorRing) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let ringX = mouseX;
+        let ringY = mouseY;
+
+        const showCursor = () => {
+          cursor.style.opacity = "1";
+          cursorRing.style.opacity = "1";
+        };
+
+        window.addEventListener("mousemove", (event) => {
+          mouseX = event.clientX;
+          mouseY = event.clientY;
+
+          cursor.style.left = mouseX + "px";
+          cursor.style.top = mouseY + "px";
+
+          showCursor();
+        }, { passive: true });
+
+        const followRing = () => {
+          ringX += (mouseX - ringX) * 0.16;
+          ringY += (mouseY - ringY) * 0.16;
+
+          cursorRing.style.left = ringX + "px";
+          cursorRing.style.top = ringY + "px";
+
+          requestAnimationFrame(followRing);
+        };
+
+        followRing();
+
+        document.querySelectorAll("a, button, [data-card]").forEach((element) => {
+          element.addEventListener("mouseenter", () => {
+            cursorRing.style.transform = "translate(-50%, -50%) scale(1.6)";
+            cursorRing.style.borderColor = "#800020";
+            cursor.style.transform = "translate(-50%, -50%) scale(0.5)";
+          });
+
+          element.addEventListener("mouseleave", () => {
+            cursorRing.style.transform = "translate(-50%, -50%) scale(1)";
+            cursorRing.style.borderColor = "rgba(255,255,255,0.55)";
+            cursor.style.transform = "translate(-50%, -50%) scale(1)";
+          });
+        });
+
+        window.addEventListener("mouseleave", () => {
+          cursor.style.opacity = "0";
+          cursorRing.style.opacity = "0";
+        });
+
+        window.addEventListener("mouseenter", () => {
+          showCursor();
+        });
+      }
+
+
+      if (prefersReducedMotion) {
+        document.querySelectorAll(".hero-reveal, .section-reveal").forEach(el => {
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        });
+      } else {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+
+        /* =====================================================
+           HERO INTRO
+        ====================================================== */
+
+        const heroTimeline = gsap.timeline({
+          defaults: {
+            ease: "power4.out"
+          }
+        });
+
+        heroTimeline
+          .from(".hero-reveal", {
+            opacity: 0,
+            y: 40,
+            duration: 1,
+            stagger: 0.15
+          })
+          .from(".hero-line", {
+            opacity: 0,
+            yPercent: 110,
+            duration: 1.25,
+            stagger: 0.12
+          }, "-=0.8")
+          .from(".hero-orb", {
+            opacity: 0,
+            scale: 0.5,
+            rotation: -90,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.5)"
+          }, "-=0.8");
+
+        /* =====================================================
+           SECTION REVEALS
+        ====================================================== */
+
+        gsap.utils.toArray(".section-reveal").forEach((element) => {
+
+          gsap.from(element, {
+            scrollTrigger: {
+              trigger: element,
+              start: "top 85%",
+              once: true
+            },
+            opacity: 0,
+            y: 80,
+            duration: 1.1,
+            ease: "power4.out"
+          });
+
+        });
+
+        /* =====================================================
+           SERVICE CARDS
+        ====================================================== */
+
+        gsap.utils.toArray("[data-card]").forEach((card, index) => {
+
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              once: true
+            },
+            opacity: 0,
+            y: 90,
+            rotateX: 5,
+            duration: 1,
+            delay: index * 0.08,
+            ease: "power4.out"
+          });
+
+          /* Subtle 3D tilt */
+          card.addEventListener("mousemove", (event) => {
+
+            const rect = card.getBoundingClientRect();
+
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const rotateY = ((x / rect.width) - 0.5) * 5;
+            const rotateX = ((y / rect.height) - 0.5) * -5;
+
+            gsap.to(card, {
+              rotateX,
+              rotateY,
+              duration: 0.4,
+              ease: "power2.out",
+              transformPerspective: 900
+            });
+
+          });
+
+          card.addEventListener("mouseleave", () => {
+
+            gsap.to(card, {
+              rotateX: 0,
+              rotateY: 0,
+              duration: 0.8,
+              ease: "elastic.out(1, 0.4)"
+            });
+
+          });
+
+        });
+
+        /* =====================================================
+           PARALLAX
+        ====================================================== */
+
+        gsap.utils.toArray("[data-speed]").forEach((element) => {
+
+          const speed = parseFloat(element.dataset.speed);
+
+          gsap.to(element, {
+            y: () => window.innerHeight * speed,
+            ease: "none",
+            scrollTrigger: {
+              trigger: element.closest("section") || element,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true
+            }
+          });
+
+        });
+
+        /* =====================================================
+           SYNERGY CARDS
+        ====================================================== */
+
+        gsap.utils.toArray(".synergy-card").forEach((card, index) => {
+
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 80%",
+              once: true
+            },
+            opacity: 0,
+            x: index === 0 ? -70 : 70,
+            duration: 1.1,
+            ease: "power4.out"
+          });
+
+        });
+
+        /* =====================================================
+           STATS
+        ====================================================== */
+
+        gsap.from(".stat-item", {
+          scrollTrigger: {
+            trigger: ".stat-item",
+            start: "top 85%",
+            once: true
+          },
+          opacity: 0,
+          y: 30,
+          stagger: 0.12,
+          duration: 0.8,
+          ease: "power3.out"
+        });
+      /* =====================================================
+         MAGNETIC CTA
+        ====================================================== */
+
+        document.querySelectorAll(".magnetic-button").forEach((button) => {
+
+          button.addEventListener("mousemove", (event) => {
+
+            const rect = button.getBoundingClientRect();
+
+            const x = event.clientX - rect.left - rect.width / 2;
+            const y = event.clientY - rect.top - rect.height / 2;
+
+            gsap.to(button, {
+              x: x * 0.12,
+              y: y * 0.12,
+              duration: 0.35,
+              ease: "power2.out"
+            });
+
+          });
+
+          button.addEventListener("mouseleave", () => {
+
+            gsap.to(button, {
+              x: 0,
+              y: 0,
+              duration: 0.6,
+              ease: "elastic.out(1, 0.35)"
+            });
+
+          });
+
+        });
+
+
+
+
+      /* =====================================================
+         QUALIFICATION -> WHATSAPP
+      ====================================================== */
+
+      const qualificationForm = document.querySelector("#qualification-form");
+      const qualificationStatus = document.querySelector("#qualification-status");
+
+      if (qualificationForm) {
+        qualificationForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const selected = qualificationForm.querySelector(
+            'input[name="need"]:checked'
+          );
+          const name = document.querySelector("#lead-name")?.value.trim();
+          const businessName = document.querySelector("#lead-business")?.value.trim();
+          const whatsapp = document.querySelector("#lead-whatsapp")?.value.trim();
+
+          if (!selected || !name || !businessName || !whatsapp) {
+            qualificationStatus.textContent =
+              "Completa tus datos y selecciona una necesidad para continuar.";
+            return;
+          }
+
+          qualificationStatus.textContent = "Registrando tu solicitud…";
+
+          try {
+            const { error } = await macesSupabase
+              .from("leads")
+              .insert([{
+                name,
+                business_name: businessName,
+                whatsapp,
+                needs: [selected.value],
+                source: "landing"
+              }]);
+
+            if (error) throw error;
+
+            const phone = "584126356150";
+            const message =
+              "Hola Maces, me interesa automatizar mi negocio.\n\n" +
+              "Nombre: " + name + "\n" +
+              "Negocio: " + businessName + "\n" +
+              "WhatsApp: " + whatsapp + "\n" +
+              "Mi necesidad: " + selected.value;
+
+            qualificationStatus.textContent = "Solicitud registrada. Abriendo WhatsApp…";
+
+            window.open(
+              `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+              "_blank",
+              "noopener,noreferrer"
+            );
+
+            qualificationForm.reset();
+          } catch (error) {
+            console.error("Error registrando lead:", error);
+            qualificationStatus.textContent =
+              "No pudimos registrar tu solicitud. Inténtalo nuevamente.";
+          }
+        });
+      }
+
+      /* =====================================================
+         REFRESH SCROLLTRIGGER
+      ====================================================== */
+
+      window.addEventListener("load", () => {
+        if (!prefersReducedMotion && typeof ScrollTrigger !== "undefined") {
+          ScrollTrigger.refresh();
+        }
+      });
+
+    });
+  </script>
+
+
+  <!-- =======================================================
+       FLOATING WHATSAPP
+  ======================================================== -->
+
+  <a
+    href="https://wa.me/584126356150?text=Hola%20Maces,%20me%20interesa%20automatizar%20mi%20negocio."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float"
+    aria-label="Contacto por WhatsApp"
+    title="Habla con Maces por WhatsApp"
+  >
+    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.105 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+    </svg>
+  </a>
+
+</body>
+</html>
+```
