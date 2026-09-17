@@ -7,7 +7,1007 @@
   <meta name="description" content="Macés — Sistemas inteligentes, automatización e IA para negocios que quieren escalar." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Macés — Sistemas Inteligentes para Negocios" />
+  <meta property="og:description" content="Automatiza WhatsA<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0E14" />
+  <meta name="description" content="Macés — Sistemas inteligentes, automatización e IA para negocios que quieren escalar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Macés — Sistemas Inteligentes para Negocios" />
   <meta property="og:description" content="Automatiza WhatsApp, citas, pedidos y procesos para recuperar tiempo y operar mejor." />
+  <meta property="og:url" content="/" />
+  <title>Macés — Sistemas Inteligentes para Negocios</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0B0E14;
+      --surface: #151923;
+      --cyan: #00F0FF;
+      --purple: #8A2BE2;
+      --text: #F3F4F6;
+      --muted: #94A3B8;
+      --line: rgba(255,255,255,.10);
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 82% 8%, rgba(0,240,255,.08), transparent 28rem),
+        radial-gradient(circle at 10% 42%, rgba(138,43,226,.09), transparent 32rem),
+        var(--bg);
+      font-family: Inter, sans-serif;
+    }
+    ::selection { background: var(--cyan); color: #071017; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(0,240,255,.55); border-radius: 999px; }
+
+    h1,h2,h3,h4,.brand { font-family: "Space Grotesk", sans-serif; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+
+    .nav-glass {
+      background: rgba(11,14,20,.68);
+      border: 1px solid rgba(255,255,255,.09);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.20);
+      transition: .3s ease;
+    }
+    .nav-glass.scrolled { background: rgba(11,14,20,.88); border-color: rgba(0,240,255,.18); }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), #8defff 45%, var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-title {
+      font-size: clamp(3.2rem, 8.5vw, 9.5rem);
+      line-height: .88;
+      letter-spacing: -.075em;
+    }
+
+    .glass-card {
+      position: relative;
+      isolation: isolate;
+      background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.018));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 25px 80px rgba(0,0,0,.20);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(0,240,255,.48);
+      box-shadow: 0 24px 90px rgba(0,240,255,.08), inset 0 1px 0 rgba(255,255,255,.08);
+      background: linear-gradient(145deg, rgba(0,240,255,.075), rgba(138,43,226,.035));
+    }
+
+    .neon-border {
+      border: 1px solid rgba(0,240,255,.35);
+      box-shadow: 0 0 0 1px rgba(0,240,255,.05), 0 0 45px rgba(0,240,255,.08);
+    }
+    .btn-primary {
+      background: var(--cyan);
+      color: #061017;
+      border-radius: var(--radius);
+      box-shadow: 0 12px 35px rgba(0,240,255,.18);
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 50px rgba(0,240,255,.28);
+      background: #6ff7ff;
+    }
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.025);
+      border-radius: var(--radius);
+      transition: .25s ease;
+    }
+    .btn-secondary:hover { border-color: rgba(0,240,255,.5); background: rgba(0,240,255,.06); }
+
+    .eyebrow {
+      color: var(--cyan);
+      letter-spacing: .24em;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .section-label {
+      color: var(--muted);
+      letter-spacing: .18em;
+      font-size: .68rem;
+      text-transform: uppercase;
+    }
+    .icon-box {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(0,240,255,.25);
+      border-radius: 12px;
+      color: var(--cyan);
+      background: rgba(0,240,255,.045);
+    }
+
+    .phone {
+      width: min(280px, 68vw);
+      aspect-ratio: 9 / 18.5;
+      border: 8px solid #080b10;
+      border-radius: 42px;
+      background: #0d1118;
+      box-shadow: 0 35px 100px rgba(0,0,0,.55), 0 0 70px rgba(0,240,255,.10);
+      overflow: hidden;
+      position: relative;
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 7px; left: 50%;
+      transform: translateX(-50%);
+      width: 90px; height: 22px;
+      border-radius: 20px;
+      background: #05070a;
+      z-index: 5;
+    }
+    .chat-bubble { max-width: 82%; border-radius: 16px; padding: 10px 12px; font-size: 11px; line-height: 1.45; }
+    .chat-in { background: #18202a; color: #d9e1ea; border-bottom-left-radius: 5px; }
+    .chat-out { background: #063d44; color: #e8ffff; border-bottom-right-radius: 5px; margin-left: auto; }
+
+    .dashboard-line {
+      height: 150px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .dashboard-line svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .pulse-dot { animation: pulse 1.8s infinite; }
+    @keyframes pulse { 0%,100%{opacity:.45;transform:scale(.92)} 50%{opacity:1;transform:scale(1)} }
+
+    .scroll-cue { animation: bob 1.8s ease-in-out infinite; }
+    @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    .whatsapp-float {
+      position: fixed; right: 22px; bottom: 22px; z-index: 70;
+      width: 58px; height: 58px; display: grid; place-items: center;
+      border-radius: 50%; background: #25D366; color: white;
+      box-shadow: 0 16px 45px rgba(37,211,102,.25);
+      transition: transform .25s ease;
+    }
+    .whatsapp-float:hover { transform: scale(1.08); }
+
+    .mobile-menu {
+      max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .25s ease;
+    }
+    .mobile-menu.open { max-height: 360px; opacity: 1; }
+
+    .legal-panel { border-top: 1px solid rgba(255,255,255,.08); }
+
+    @media (max-width: 767px) {
+      .hero-title { font-size: clamp(3.15rem, 15vw, 5.5rem); }
+      .whatsapp-float { right: 16px; bottom: 16px; width: 54px; height: 54px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+    }
+  </style>
+
+<style id="maces-final-responsive">
+/* MACÉS — responsive polish: preserve desktop visual design */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{min-width:320px;overflow-x:hidden}
+img,video,svg{max-width:100%}
+button,a{touch-action:manipulation}
+:focus-visible{outline:2px solid #00F0FF;outline-offset:3px}
+input,textarea,select{font-size:16px}
+
+/* Smooth fluid type without replacing the original design */
+@media (max-width:1100px){
+  .hero-title,.maces-hero-title{font-size:clamp(3rem,7vw,5.5rem)}
+}
+
+@media (max-width:767px){
+  /* Keep the original look; only stack what physically needs stacking. */
+  .hero-grid,.maces-hero-grid,.hero-content-grid{grid-template-columns:1fr!important}
+
+  /* Hero spacing */
+  .hero,.maces-hero{padding-top:7.5rem!important}
+
+  /* CTAs */
+  .hero-actions,.maces-hero-actions{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    width:100%;
+  }
+  .hero-actions a,.maces-hero-actions a,
+  .hero-actions button,.maces-hero-actions button{
+    width:100%;
+    justify-content:center;
+  }
+
+  /* Preserve card styling, only change column count. */
+  .grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .grid-cols-3{grid-template-columns:1fr!important}
+
+  /* Phone mockup */
+  .iphone-mockup,.phone-mockup,.maces-device{
+    width:min(84vw,360px)!important;
+    margin-inline:auto;
+  }
+
+  /* Compact mobile menu */
+  #mobile-menu{
+    max-height:72vh;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Prevent fixed WhatsApp from covering content. */
+  footer{padding-bottom:5rem!important}
+}
+
+@media (max-width:560px){
+  .grid-cols-4,.grid-cols-3,.grid-cols-2{
+    grid-template-columns:1fr!important;
+  }
+
+  /* Don't make the original typography tiny. */
+  .hero-title,.maces-hero-title,.hero h1{
+    font-size:clamp(2.65rem,12vw,4rem)!important;
+    line-height:.96!important;
+  }
+
+  /* Preserve rounded card aesthetic. */
+  .rounded-2xl,.rounded-3xl{border-radius:12px}
+}
+
+@media (max-width:380px){
+  .hero-title,.maces-hero-title,.hero h1{
+    font-size:clamp(2.35rem,12vw,3.15rem)!important;
+  }
+}
+
+@media (min-width:768px) and (max-width:1100px){
+  .grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+/* Touch devices shouldn't lose content because of hover-only interactions. */
+@media (hover:none){
+  .hover\:scale-105:hover,
+  .hover\:scale-110:hover,
+  .hover\:-translate-y-1:hover,
+  .hover\:-translate-y-2:hover{transform:none!important}
+}
+
+/* Accessibility/performance only — no visual redesign. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+
+
+<style id="maces-mobile-menu-polish">
+/* Mobile header: compact floating menu, preserving the original visual design. */
+@media (max-width: 767px) {
+  header {
+    padding: 10px 10px 0 !important;
+  }
+
+  #main-nav {
+    position: relative;
+    padding: 10px 12px !important;
+    border-radius: 14px !important;
+  }
+
+  #mobile-menu {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 60 !important;
+    max-height: 0 !important;
+    opacity: 0;
+    overflow: hidden !important;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: max-height .28s ease, opacity .2s ease, transform .28s ease;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    background: rgba(11,14,20,.94);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 18px 45px rgba(0,0,0,.32);
+  }
+
+  #mobile-menu.open {
+    max-height: 250px !important;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  #mobile-menu > div {
+    margin-top: 0 !important;
+    padding: 8px !important;
+    border-top: 0 !important;
+    gap: 3px !important;
+  }
+
+  #mobile-menu a {
+    min-height: 40px !important;
+    padding: 9px 12px !important;
+    border-radius: 9px !important;
+  }
+
+  #mobile-menu .btn-primary {
+    min-height: 42px !important;
+    margin-top: 3px !important;
+    padding: 10px 12px !important;
+  }
+
+  .hero, .maces-hero {
+    padding-top: 6.5rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  #mobile-menu a {
+    min-height: 38px !important;
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+  }
+  #mobile-menu .btn-primary {
+    min-height: 40px !important;
+  }
+}
+</style>
+
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 z-50 w-full px-4 pt-4 sm:px-6">
+    <nav id="main-nav" class="nav-glass mx-auto max-w-7xl rounded-[12px] px-4 py-3 sm:px-5" aria-label="Navegación principal">
+      <div class="flex items-center justify-between">
+        <a href="#inicio" class="brand text-xl font-bold tracking-[-.06em]" aria-label="Macés — Inicio">
+          MACÉS<span class="gradient-text">.</span>
+        </a>
+
+        <div class="hidden items-center gap-7 text-sm text-slate-400 md:flex">
+          <a class="transition hover:text-white" href="#soluciones">Soluciones</a>
+          <a class="transition hover:text-white" href="#metodologia">Metodología</a>
+          <a class="transition hover:text-white" href="#faq">FAQs</a>
+        </div>
+
+        <div class="hidden items-center gap-3 md:flex">
+          <a href="#contacto" class="btn-primary px-5 py-3 text-sm font-bold">Hablemos</a>
+        </div>
+
+        <button id="menu-toggle" class="grid h-11 w-11 place-items-center rounded-[12px] border border-white/10 md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+          <span class="text-xl">☰</span>
+        </button>
+      </div>
+
+      <div id="mobile-menu" class="mobile-menu md:hidden">
+        <div class="mt-3 grid gap-2 border-t border-white/10 pt-3">
+          <a class="rounded-[12px] px-4 py-3 text-sm text-slate-300 hover:bg-white/5" href="#soluciones">Soluciones</a>
+          <a class="rounded-[12px] px-4 py-3 text-sm text-slate-300 hover:bg-white/5" href="#metodologia">Metodología</a>
+          <a class="rounded-[12px] px-4 py-3 text-sm text-slate-300 hover:bg-white/5" href="#faq">FAQs</a>
+          <a class="btn-primary mt-1 px-4 py-4 text-center text-sm font-bold" href="#contacto">Hablar con Macés</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="relative min-h-screen overflow-hidden px-5 pb-20 pt-36 sm:px-8 lg:px-12">
+      <div class="absolute -right-40 top-20 h-[32rem] w-[32rem] rounded-full bg-cyan-400/10 blur-[110px]"></div>
+      <div class="absolute -left-40 bottom-0 h-[30rem] w-[30rem] rounded-full bg-purple-600/10 blur-[120px]"></div>
+
+      <div class="relative z-10 mx-auto grid min-h-[78vh] max-w-[1500px] items-center gap-14 lg:grid-cols-12">
+        <div class="lg:col-span-8">
+          <div class="eyebrow mb-7 hero-reveal">🚀 Agencia de automatización & IA · Barinas</div>
+
+          <h1 class="hero-title max-w-6xl font-bold uppercase hero-reveal">
+            Sistemas<br />
+            <span class="gradient-text">inteligentes</span><br />
+            para escalar.
+          </h1>
+
+          <p class="mt-8 max-w-2xl text-base leading-8 text-slate-400 sm:text-xl">
+            Diseñamos ecosistemas de Inteligencia Artificial que responden WhatsApp 24/7,
+            agendan citas, toman pedidos y ordenan procesos. Recupera tiempo, reduce errores
+            y convierte mejor.
+          </p>
+
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#contacto" class="btn-primary inline-flex items-center justify-center gap-3 px-6 py-4 text-sm font-bold">
+              Automatizar mi negocio hoy <span>→</span>
+            </a>
+            <a href="#soluciones" class="btn-secondary inline-flex items-center justify-center px-6 py-4 text-sm font-bold text-slate-200">
+              Ver soluciones
+            </a>
+          </div>
+
+          <div class="mt-5 flex items-center gap-3 text-xs text-slate-500">
+            <span class="grid h-6 w-6 place-items-center rounded-full border border-cyan-400/30 text-cyan-300">✓</span>
+            Atención directa por WhatsApp · Sin conocimientos técnicos avanzados
+          </div>
+        </div>
+
+        <div class="relative flex justify-center lg:col-span-4">
+          <div class="absolute inset-0 m-auto h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl"></div>
+          <div class="phone relative z-10">
+            <div class="flex h-full flex-col bg-[#0d1118]">
+              <div class="border-b border-white/10 px-5 pb-3 pt-12">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div class="text-[9px] uppercase tracking-[.2em] text-cyan-300">Macés AI</div>
+                    <div class="mt-1 text-sm font-bold">Atención automática</div>
+                  </div>
+                  <span class="pulse-dot h-2.5 w-2.5 rounded-full bg-cyan-300"></span>
+                </div>
+              </div>
+              <div class="flex-1 space-y-3 p-4">
+                <div class="chat-bubble chat-in">Hola, quiero agendar una cita para esta semana.</div>
+                <div class="chat-bubble chat-out">¡Claro! Tengo disponibilidad el jueves a las 4:00 p. m. ¿Te funciona?</div>
+                <div class="chat-bubble chat-in">Sí, perfecto.</div>
+                <div class="chat-bubble chat-out">Listo. Tu cita quedó registrada. Te enviaré la confirmación.</div>
+                <div class="mt-5 rounded-xl border border-cyan-400/20 bg-cyan-400/5 p-3 text-[10px] text-slate-400">
+                  ✓ Cita creada<br />
+                  ✓ Datos registrados<br />
+                  ✓ Seguimiento activado
+                </div>
+              </div>
+              <div class="border-t border-white/10 p-3">
+                <div class="rounded-xl bg-white/5 px-3 py-2 text-[10px] text-slate-600">Escribe un mensaje…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#confianza" class="scroll-cue absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-[10px] uppercase tracking-[.28em] text-slate-600">
+        <span class="mb-2 block">Explorar</span>
+        <span class="text-cyan-300">↓</span>
+      </a>
+    </section>
+
+    <!-- TRUST STACK -->
+    <section id="confianza" class="border-y border-white/[.06] px-5 py-7 sm:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-4 text-center text-[10px] uppercase tracking-[.25em] text-slate-600">Tecnología integrada con</div>
+        <div class="overflow-hidden">
+          <div class="marquee-track gap-10 text-sm font-bold text-slate-500">
+            <span>OPENAI</span><span class="text-cyan-300">✦</span><span>WHATSAPP BUSINESS</span><span class="text-purple-300">✦</span><span>META</span><span class="text-cyan-300">✦</span><span>MAKE</span><span class="text-purple-300">✦</span><span>GOOGLE CALENDAR</span><span class="text-cyan-300">✦</span>
+            <span>OPENAI</span><span class="text-cyan-300">✦</span><span>WHATSAPP BUSINESS</span><span class="text-purple-300">✦</span><span>META</span><span class="text-cyan-300">✦</span><span>MAKE</span><span class="text-purple-300">✦</span><span>GOOGLE CALENDAR</span><span class="text-cyan-300">✦</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12 lg:items-center">
+        <div class="lg:col-span-7 section-reveal">
+          <div class="eyebrow mb-5">El problema</div>
+          <h2 class="text-5xl font-bold leading-[.95] tracking-[-.06em] sm:text-7xl">
+            ¿Tu equipo pierde horas en WhatsApp mientras tus clientes esperan?
+          </h2>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="glass-card p-7 sm:p-9">
+            <p class="text-lg leading-8 text-slate-300">
+              Cuando una operación depende de copiar datos, responder lo mismo y perseguir seguimientos,
+              el crecimiento se vuelve más difícil de controlar.
+            </p>
+            <div class="mt-7 grid gap-3 text-sm text-slate-400">
+              <div class="flex gap-3"><span class="text-cyan-300">01</span> Consultas repetitivas</div>
+              <div class="flex gap-3"><span class="text-cyan-300">02</span> Citas y pedidos manuales</div>
+              <div class="flex gap-3"><span class="text-cyan-300">03</span> Seguimientos que se pierden</div>
+              <div class="flex gap-3"><span class="text-cyan-300">04</span> Información dispersa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section id="soluciones" class="px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl section-reveal">
+          <div class="eyebrow mb-5">El ecosistema Macés</div>
+          <h2 class="text-5xl font-bold leading-[.92] tracking-[-.06em] sm:text-7xl">
+            Cuatro sistemas.<br /><span class="text-slate-600">Una operación conectada.</span>
+          </h2>
+          <p class="mt-7 max-w-2xl text-base leading-8 text-slate-400">
+            Soluciones concretas para atraer, atender, organizar y mejorar la experiencia de tus clientes.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-5 md:grid-cols-2">
+          <article class="glass-card solution-card p-7 sm:p-9">
+            <div class="icon-box mb-8">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg>
+            </div>
+            <div class="section-label">01 · Atención 24/7</div>
+            <h3 class="mt-3 text-3xl font-bold tracking-[-.04em]">Atención automática</h3>
+            <p class="mt-4 leading-7 text-slate-400">
+              Responde preguntas, agenda citas, toma pedidos y captura datos por WhatsApp incluso fuera de horario.
+            </p>
+          </article>
+
+          <article class="glass-card solution-card p-7 sm:p-9">
+            <div class="icon-box mb-8">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6M7 16h8"/></svg>
+            </div>
+            <div class="section-label">02 · Gestión</div>
+            <h3 class="mt-3 text-3xl font-bold tracking-[-.04em]">Procesos bajo control</h3>
+            <p class="mt-4 leading-7 text-slate-400">
+              Centraliza información y automatiza tareas para reducir trabajo manual y mantener la operación ordenada.
+            </p>
+          </article>
+
+          <article class="glass-card solution-card p-7 sm:p-9">
+            <div class="icon-box mb-8">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="m7 15 3-4 3 2 5-7"/></svg>
+            </div>
+            <div class="section-label">03 · Posicionamiento</div>
+            <h3 class="mt-3 text-3xl font-bold tracking-[-.04em]">Más fácil de encontrar</h3>
+            <p class="mt-4 leading-7 text-slate-400">
+              Mejora la presencia digital de tu negocio para que clientes cercanos puedan encontrarte cuando te buscan.
+            </p>
+          </article>
+
+          <article class="glass-card solution-card p-7 sm:p-9">
+            <div class="icon-box mb-8">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 18h6M8 6h8"/></svg>
+            </div>
+            <div class="section-label">04 · Interacción</div>
+            <h3 class="mt-3 text-3xl font-bold tracking-[-.04em]">Experiencias digitales</h3>
+            <p class="mt-4 leading-7 text-slate-400">
+              Menús QR, accesos, información y flujos digitales para que tus clientes encuentren lo que necesitan sin esperar.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY / DOUBLE ENGINE -->
+    <section id="metodologia" class="relative overflow-hidden px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
+      <div class="absolute left-1/2 top-1/2 h-[35rem] w-[35rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/10 blur-[130px]"></div>
+      <div class="relative mx-auto max-w-7xl">
+        <div class="max-w-4xl section-reveal">
+          <div class="eyebrow mb-5">Por qué Macés</div>
+          <h2 class="text-5xl font-bold leading-[.92] tracking-[-.06em] sm:text-7xl">
+            No solo instalamos software.<br />
+            <span class="gradient-text">Construimos máquinas de ventas.</span>
+          </h2>
+        </div>
+
+        <div class="mt-14 grid gap-5 lg:grid-cols-2">
+          <article class="glass-card min-h-[430px] p-8 sm:p-12">
+            <div class="flex items-center justify-between">
+              <div class="section-label">Motor 01</div>
+              <div class="icon-box h-10 w-10">
+                <span class="font-bold">AI</span>
+              </div>
+            </div>
+            <div class="mt-24">
+              <h3 class="text-5xl font-bold tracking-[-.06em]">Atraemos.</h3>
+              <p class="mt-5 max-w-md text-base leading-8 text-slate-400">
+                Posicionamiento, captación y puntos de entrada para que más personas lleguen a tu negocio.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card min-h-[430px] p-8 sm:p-12 lg:mt-20">
+            <div class="flex items-center justify-between">
+              <div class="section-label">Motor 02</div>
+              <div class="icon-box h-10 w-10">
+                <span class="font-bold">↗</span>
+              </div>
+            </div>
+            <div class="mt-24">
+              <h3 class="text-5xl font-bold tracking-[-.06em]">Atendemos.</h3>
+              <p class="mt-5 max-w-md text-base leading-8 text-slate-400">
+                IA conversacional, automatizaciones y seguimiento para convertir conversaciones en acciones.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOCKUP + DASHBOARD -->
+    <section class="px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
+      <div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-12">
+        <div class="glass-card p-8 sm:p-10 lg:col-span-5">
+          <div class="eyebrow">Así se ve</div>
+          <h2 class="mt-4 text-4xl font-bold tracking-[-.05em] sm:text-5xl">Tu cliente interactúa. Tu sistema trabaja.</h2>
+          <p class="mt-5 leading-7 text-slate-400">
+            Un flujo digital puede conectar WhatsApp, agenda, pedidos y datos sin obligar a tu equipo a repetir cada paso.
+          </p>
+          <div class="mt-8 space-y-3 text-sm text-slate-300">
+            <div class="flex items-center gap-3"><span class="text-cyan-300">✓</span> Conversación automática</div>
+            <div class="flex items-center gap-3"><span class="text-cyan-300">✓</span> Registro de información</div>
+            <div class="flex items-center gap-3"><span class="text-cyan-300">✓</span> Agenda o pedido</div>
+            <div class="flex items-center gap-3"><span class="text-cyan-300">✓</span> Seguimiento</div>
+          </div>
+        </div>
+
+        <div class="glass-card overflow-hidden p-6 sm:p-8 lg:col-span-7">
+          <div class="flex items-center justify-between border-b border-white/10 pb-5">
+            <div>
+              <div class="text-xs uppercase tracking-[.2em] text-slate-600">Control Macés</div>
+              <div class="mt-1 text-lg font-bold">Operación automatizada</div>
+            </div>
+            <span class="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1 text-[10px] text-cyan-300">EN VIVO</span>
+          </div>
+          <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div class="rounded-[12px] border border-white/10 bg-white/[.025] p-4">
+              <div class="text-xs text-slate-600">Horas ahorradas</div>
+              <div class="mt-2 text-2xl font-bold">+40h</div>
+            </div>
+            <div class="rounded-[12px] border border-white/10 bg-white/[.025] p-4">
+              <div class="text-xs text-slate-600">Citas / pedidos</div>
+              <div class="mt-2 text-2xl font-bold">+120</div>
+            </div>
+            <div class="rounded-[12px] border border-white/10 bg-white/[.025] p-4 col-span-2 sm:col-span-1">
+              <div class="text-xs text-slate-600">Automatización</div>
+              <div class="mt-2 text-2xl font-bold text-cyan-300">24/7</div>
+            </div>
+          </div>
+          <div class="dashboard-line mt-7">
+            <svg viewBox="0 0 800 150" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 125 C70 118 90 130 145 105 S220 112 270 86 S350 100 405 62 S490 78 545 52 S650 61 800 18" fill="none" stroke="rgba(0,240,255,.9)" stroke-width="3"/>
+              <path d="M0 125 C70 118 90 130 145 105 S220 112 270 86 S350 100 405 62 S490 78 545 52 S650 61 800 18 L800 150 L0 150Z" fill="rgba(0,240,255,.045)"/>
+            </svg>
+          </div>
+          <div class="mt-4 flex justify-between text-[10px] uppercase tracking-[.15em] text-slate-600">
+            <span>Inicio</span><span>Proceso</span><span>Optimización</span><span>Escala</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF — FICTITIOUS DEMO -->
+    <section class="px-5 py-24 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-6 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <div class="eyebrow">Caso ilustrativo</div>
+            <h2 class="mt-4 text-5xl font-bold leading-[.94] tracking-[-.06em] sm:text-6xl">
+              Así puede sentirse la automatización.
+            </h2>
+            <p class="mt-6 leading-7 text-slate-400">
+              Ejemplo ficticio de cómo podría verse la experiencia de un negocio que automatiza su atención y pedidos con Macés.
+            </p>
+          </div>
+          <div class="glass-card lg:col-span-7 p-8 sm:p-10">
+            <div class="flex items-start gap-5">
+              <div class="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-300">★</div>
+              <div>
+                <div class="text-sm font-bold text-cyan-300">Agua Lite <span class="ml-2 text-[10px] uppercase tracking-[.16em] text-slate-500">Ejemplo ficticio</span></div>
+                <p class="mt-4 text-lg leading-8 text-slate-300">
+                  “Antes perdíamos tiempo respondiendo las mismas preguntas y tomando pedidos manualmente. Con un sistema automatizado, nuestros clientes pueden recibir información y avanzar con su pedido mucho más rápido.”
+                </p>
+                <div class="mt-6 text-xs uppercase tracking-[.18em] text-slate-500">Caso demostrativo · No corresponde a un cliente real</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center section-reveal">
+          <div class="eyebrow">Respuestas claras</div>
+          <h2 class="mt-4 text-5xl font-bold tracking-[-.06em] sm:text-7xl">Decisiones inteligentes.</h2>
+        </div>
+
+        <div class="glass-card mt-12 overflow-hidden px-6 sm:px-10">
+          <details class="group border-b border-white/10 py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-5 text-base font-bold sm:text-lg">
+              ¿Cuánto tarda la implementación?
+              <span class="text-xl text-cyan-300">+</span>
+            </summary>
+            <p class="max-w-3xl pt-4 text-sm leading-7 text-slate-400">
+              Algunas implementaciones pueden estar listas en menos de 7 días, dependiendo del alcance, accesos e integraciones necesarias. Primero definimos qué debe quedar operativo.
+            </p>
+          </details>
+          <details class="group border-b border-white/10 py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-5 text-base font-bold sm:text-lg">
+              ¿Qué incluye una implementación de 7 días?
+              <span class="text-xl text-cyan-300">+</span>
+            </summary>
+            <p class="max-w-3xl pt-4 text-sm leading-7 text-slate-400">
+              Cuando el alcance lo permite, incluye configuración del flujo principal, conexión de las herramientas acordadas, pruebas y puesta en marcha. El alcance exacto se define antes de comenzar.
+            </p>
+          </details>
+          <details class="group border-b border-white/10 py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-5 text-base font-bold sm:text-lg">
+              ¿Necesito saber de computación?
+              <span class="text-xl text-cyan-300">+</span>
+            </summary>
+            <p class="max-w-3xl pt-4 text-sm leading-7 text-slate-400">
+              No. Te entregamos el sistema preparado para operar y te acompañamos durante la puesta en marcha.
+            </p>
+          </details>
+          <details class="group py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-5 text-base font-bold sm:text-lg">
+              ¿Tengo soporte?
+              <span class="text-xl text-cyan-300">+</span>
+            </summary>
+            <p class="max-w-3xl pt-4 text-sm leading-7 text-slate-400">
+              Sí. El soporte y mantenimiento se definen según la solución contratada y pueden incluir acompañamiento continuo.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
+      <div class="relative mx-auto max-w-7xl overflow-hidden rounded-[12px] border border-cyan-400/20 bg-[#10151e] p-8 sm:p-14 lg:p-20">
+        <div class="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-cyan-400/10 blur-[100px]"></div>
+        <div class="relative z-10 max-w-4xl">
+          <div class="eyebrow">El próximo caso de éxito en Barinas puede ser el tuyo.</div>
+          <h2 class="mt-5 text-5xl font-bold leading-[.92] tracking-[-.06em] sm:text-7xl">
+            ¿Qué proceso<br /><span class="gradient-text">automatizamos primero?</span>
+          </h2>
+          <p class="mt-7 max-w-2xl text-base leading-8 text-slate-400">
+            Cuéntanos qué está frenando tu operación. Te llevaremos a WhatsApp con el contexto listo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contacto" class="px-5 pb-24 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-6 lg:grid-cols-12">
+          <div class="glass-card p-8 sm:p-10 lg:col-span-5">
+            <div class="eyebrow">Hablemos</div>
+            <h2 class="mt-4 text-4xl font-bold tracking-[-.05em] sm:text-5xl">Lleva tu operación a otro nivel.</h2>
+            <p class="mt-5 leading-7 text-slate-400">
+              Déjanos tus datos y la necesidad principal. Registraremos la solicitud y abriremos WhatsApp con el contexto.
+            </p>
+            <div class="mt-8 rounded-[12px] border border-cyan-400/15 bg-cyan-400/[.035] p-5 text-sm text-slate-400">
+              <div class="font-bold text-slate-200">Contacto directo</div>
+              <a class="mt-2 inline-block text-cyan-300 hover:underline" href="https://wa.me/584126356150?text=Hola%20Mac%C3%A9s%2C%20quiero%20automatizar%20mi%20negocio." target="_blank" rel="noopener noreferrer">WhatsApp · 0412-6356150</a>
+            </div>
+          </div>
+
+          <div class="glass-card p-8 sm:p-10 lg:col-span-7">
+            <form id="qualification-form" class="space-y-4">
+              <div class="grid gap-4 sm:grid-cols-2">
+                <input id="lead-name" name="name" type="text" required placeholder="Tu nombre" autocomplete="name"
+                  class="w-full rounded-[12px] border border-white/10 bg-white/[.035] px-4 py-4 text-sm text-white outline-none placeholder:text-slate-600 focus:border-cyan-400/60" />
+                <input id="lead-business" name="business_name" type="text" required placeholder="Nombre de tu negocio" autocomplete="organization"
+                  class="w-full rounded-[12px] border border-white/10 bg-white/[.035] px-4 py-4 text-sm text-white outline-none placeholder:text-slate-600 focus:border-cyan-400/60" />
+              </div>
+              <input id="lead-whatsapp" name="whatsapp" type="tel" required placeholder="Tu WhatsApp" autocomplete="tel"
+                class="w-full rounded-[12px] border border-white/10 bg-white/[.035] px-4 py-4 text-sm text-white outline-none placeholder:text-slate-600 focus:border-cyan-400/60" />
+
+              <fieldset>
+                <legend class="mb-3 text-xs font-bold uppercase tracking-[.18em] text-slate-500">¿Qué quieres automatizar?</legend>
+                <div class="grid gap-3 sm:grid-cols-3">
+                  <label class="cursor-pointer rounded-[12px] border border-white/10 bg-white/[.025] p-4 text-sm text-slate-400 transition hover:border-cyan-400/40 has-[:checked]:border-cyan-400/70 has-[:checked]:bg-cyan-400/[.06]">
+                    <input class="sr-only" type="radio" name="need" value="Atención y WhatsApp" required />
+                    Atención y WhatsApp
+                  </label>
+                  <label class="cursor-pointer rounded-[12px] border border-white/10 bg-white/[.025] p-4 text-sm text-slate-400 transition hover:border-cyan-400/40 has-[:checked]:border-cyan-400/70 has-[:checked]:bg-cyan-400/[.06]">
+                    <input class="sr-only" type="radio" name="need" value="Ventas y seguimiento" />
+                    Ventas y seguimiento
+                  </label>
+                  <label class="cursor-pointer rounded-[12px] border border-white/10 bg-white/[.025] p-4 text-sm text-slate-400 transition hover:border-cyan-400/40 has-[:checked]:border-cyan-400/70 has-[:checked]:bg-cyan-400/[.06]">
+                    <input class="sr-only" type="radio" name="need" value="Procesos y operaciones" />
+                    Procesos y operaciones
+                  </label>
+                </div>
+              </fieldset>
+
+              <button type="submit" class="btn-primary flex w-full items-center justify-between px-6 py-5 text-sm font-bold">
+                Iniciar Chat en WhatsApp 💬 <span class="text-xl">↗</span>
+              </button>
+              <p id="qualification-status" class="min-h-5 text-xs text-slate-600" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="px-5 pb-10 pt-8 sm:px-8 lg:px-12">
+    <div class="mx-auto max-w-7xl border-t border-white/10 pt-8">
+      <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+        <div>
+          <div class="brand text-2xl font-bold tracking-[-.06em]">MACÉS<span class="gradient-text">.</span></div>
+          <p class="mt-2 max-w-xs text-xs leading-6 text-slate-600">Sistemas inteligentes, automatización e IA para negocios que quieren escalar.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <a class="rounded-[12px] border border-white/10 px-4 py-2 text-slate-500 hover:border-cyan-400/30 hover:text-white" href="https://www.instagram.com/maces_ven/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="rounded-[12px] border border-white/10 px-4 py-2 text-slate-500 hover:border-cyan-400/30 hover:text-white" href="https://www.tiktok.com/@maces_ven" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a class="rounded-[12px] border border-white/10 px-4 py-2 text-slate-500 hover:border-cyan-400/30 hover:text-white" href="#terminos">Términos</a>
+          <a class="rounded-[12px] border border-white/10 px-4 py-2 text-slate-500 hover:border-cyan-400/30 hover:text-white" href="#privacidad">Privacidad</a>
+        </div>
+        <div class="text-[10px] uppercase tracking-[.18em] text-slate-700">© 2026 Macés · Todos los derechos reservados.</div>
+      </div>
+
+      <div class="legal-panel mt-8 grid gap-8 pt-8 text-xs leading-6 text-slate-600 md:grid-cols-2">
+        <div id="terminos">
+          <div class="mb-2 font-bold uppercase tracking-[.18em] text-slate-500">Términos y condiciones</div>
+          <p>El alcance, tiempos, integraciones, soporte y condiciones comerciales de cada servicio se establecen en la propuesta o acuerdo correspondiente. La información de esta página es descriptiva y puede variar según el proyecto.</p>
+        </div>
+        <div id="privacidad">
+          <div class="mb-2 font-bold uppercase tracking-[.18em] text-slate-500">Política de privacidad</div>
+          <p>Los datos enviados en el formulario se utilizan para gestionar la solicitud de contacto. Evita enviar información sensible. Las prácticas específicas de tratamiento, conservación y eliminación deben ajustarse a la operación y normativa aplicable.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/584126356150?text=Hola%20Mac%C3%A9s%2C%20quiero%20automatizar%20mi%20negocio." target="_blank" rel="noopener noreferrer" aria-label="Hablar con Macés por WhatsApp" title="Hablar con Macés por WhatsApp">
+    <svg width="27" height="27" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M.057 24l1.687-6.163a11.9 11.9 0 1 1 4.8 4.8L.057 24Zm6.59-3.84c1.53.91 3.12 1.38 4.78 1.38h.004a9.82 9.82 0 1 0-8.32-4.6l-.99 3.62 3.72-.4.806.0Zm8.24-5.02c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.47.07-.72.34-.25.27-.94.92-.94 2.25s.96 2.61 1.09 2.79c.14.18 1.89 2.89 4.58 4.05.64.28 1.14.45 1.53.58.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32Z"/>
+    </svg>
+  </a>
+
+  <script>
+    const MACES_SUPABASE_URL = 'https://sgkowzmfmedldznnnygs.supabase.co';
+    const MACES_SUPABASE_KEY = 'sb_publishable_eAJ0XteDHSj6yLkSfKagQQ_AL_EDSvi';
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const nav = document.querySelector("#main-nav");
+      const toggle = document.querySelector("#menu-toggle");
+      const mobileMenu = document.querySelector("#mobile-menu");
+
+      window.addEventListener("scroll", () => {
+        nav?.classList.toggle("scrolled", window.scrollY > 24);
+      }, { passive: true });
+
+      toggle?.addEventListener("click", () => {
+        const open = mobileMenu.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+        toggle.querySelector("span").textContent = open ? "×" : "☰";
+      });
+
+      mobileMenu?.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          toggle?.setAttribute("aria-expanded", "false");
+          if (toggle) toggle.querySelector("span").textContent = "☰";
+        });
+      });
+
+      if (!reduced && typeof gsap !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".hero-reveal", {
+          opacity: 0,
+          y: 35,
+          duration: 1,
+          stagger: .12,
+          ease: "power4.out"
+        });
+
+        gsap.utils.toArray(".section-reveal, .solution-card, .glass-card").forEach((el, i) => {
+          if (el.classList.contains("hero-reveal")) return;
+          gsap.from(el, {
+            scrollTrigger: { trigger: el, start: "top 88%", once: true },
+            opacity: 0,
+            y: 35,
+            duration: .8,
+            delay: (i % 3) * .05,
+            ease: "power3.out"
+          });
+        });
+
+        gsap.utils.toArray(".solution-card").forEach(card => {
+          card.addEventListener("mousemove", e => {
+            const r = card.getBoundingClientRect();
+            const rx = ((e.clientY - r.top) / r.height - .5) * -3;
+            const ry = ((e.clientX - r.left) / r.width - .5) * 3;
+            gsap.to(card, { rotateX: rx, rotateY: ry, duration: .35, transformPerspective: 900 });
+          });
+          card.addEventListener("mouseleave", () => gsap.to(card, { rotateX: 0, rotateY: 0, duration: .5 }));
+        });
+      }
+
+      const form = document.querySelector("#qualification-form");
+      const status = document.querySelector("#qualification-status");
+
+      form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const selected = form.querySelector('input[name="need"]:checked');
+        const name = document.querySelector("#lead-name")?.value.trim();
+        const businessName = document.querySelector("#lead-business")?.value.trim();
+        const whatsapp = document.querySelector("#lead-whatsapp")?.value.trim();
+
+        if (!selected || !name || !businessName || !whatsapp) {
+          status.textContent = "Completa tus datos y selecciona una necesidad.";
+          return;
+        }
+
+        status.textContent = "Registrando tu solicitud…";
+
+        try {
+          if (!window.supabase) throw new Error("Supabase no disponible");
+
+          const client = window.supabase.createClient(MACES_SUPABASE_URL, MACES_SUPABASE_KEY);
+          const { error } = await client.from("leads").insert([{
+            name,
+            business_name: businessName,
+            whatsapp,
+            needs: [selected.value],
+            source: "landing"
+          }]);
+
+          if (error) throw error;
+
+          const phone = "584126356150";
+          const message =
+            "Hola Macés, quiero automatizar mi negocio.\n\n" +
+            "Nombre: " + name + "\n" +
+            "Negocio: " + businessName + "\n" +
+            "WhatsApp: " + whatsapp + "\n" +
+            "Necesidad: " + selected.value;
+
+          status.textContent = "Solicitud registrada. Abriendo WhatsApp…";
+          window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+          form.reset();
+        } catch (error) {
+          console.error(error);
+          status.textContent = "No pudimos registrar la solicitud. Puedes escribirnos directamente por WhatsApp.";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+pp, citas, pedidos y procesos para recuperar tiempo y operar mejor." />
   <meta property="og:url" content="/" />
   <title>Macés — Sistemas Inteligentes para Negocios</title>
 
