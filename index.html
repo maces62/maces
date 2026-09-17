@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0B0E14" />
   <meta name="description" content="Macés — Sistemas inteligentes, automatización e IA para negocios que quieren escalar." />
   <meta property="og:type" content="website" />
@@ -11,9 +11,9 @@
   <meta property="og:url" content="/" />
   <title>Macés — Sistemas Inteligentes para Negocios</title>
 
-  <script src="https://cdn.tailwindcss.com" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -208,307 +208,101 @@
     }
   </style>
 
-<style id="maces-responsive-200">
-/* =========================================================
-   MACÉS — Responsive 200% pass
-   Fluid layout, touch targets, overflow protection,
-   accessibility, reduced motion and mobile performance.
-   ========================================================= */
+<style id="maces-final-responsive">
+/* MACÉS — responsive polish: preserve desktop visual design */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{min-width:320px;overflow-x:hidden}
+img,video,svg{max-width:100%}
+button,a{touch-action:manipulation}
+:focus-visible{outline:2px solid #00F0FF;outline-offset:3px}
+input,textarea,select{font-size:16px}
 
-:root {
-  --maces-gutter: clamp(1rem, 3.5vw, 3rem);
-  --maces-section-y: clamp(4rem, 9vw, 8rem);
-  --maces-radius: 12px;
+/* Smooth fluid type without replacing the original design */
+@media (max-width:1100px){
+  .hero-title,.maces-hero-title{font-size:clamp(3rem,7vw,5.5rem)}
 }
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
+@media (max-width:767px){
+  /* Keep the original look; only stack what physically needs stacking. */
+  .hero-grid,.maces-hero-grid,.hero-content-grid{grid-template-columns:1fr!important}
 
-body {
-  min-width: 320px;
-  overflow-x: hidden;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
+  /* Hero spacing */
+  .hero,.maces-hero{padding-top:7.5rem!important}
 
-img, video, svg, canvas {
-  max-width: 100%;
-  height: auto;
-}
-
-video {
-  display: block;
-}
-
-button, a, input, textarea, select {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button, a {
-  touch-action: manipulation;
-}
-
-a, button {
-  min-height: 44px;
-}
-
-section {
-  scroll-margin-top: 90px;
-}
-
-.container, [class*="max-w-"] {
-  max-width: min(100%, 1440px);
-}
-
-.maces-fluid-title {
-  font-size: clamp(2.35rem, 7vw, 6.5rem);
-  line-height: .94;
-  letter-spacing: -.045em;
-}
-
-.maces-fluid-lead {
-  font-size: clamp(1rem, 1.45vw, 1.2rem);
-  line-height: 1.65;
-}
-
-.maces-section-pad {
-  padding-top: var(--maces-section-y);
-  padding-bottom: var(--maces-section-y);
-}
-
-/* Prevent long words/URLs from creating horizontal scrolling. */
-h1, h2, h3, h4, p, a, li, button, label, input, textarea {
-  overflow-wrap: anywhere;
-}
-
-/* iOS safe areas */
-.maces-safe-bottom {
-  padding-bottom: max(1rem, env(safe-area-inset-bottom));
-}
-
-.maces-safe-top {
-  padding-top: max(1rem, env(safe-area-inset-top));
-}
-
-/* Touch-friendly form controls. */
-input, textarea, select {
-  font-size: 16px !important;
-  min-height: 48px;
-}
-
-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* Header */
-header {
-  max-width: 100vw;
-}
-
-header nav a {
-  white-space: nowrap;
-}
-
-/* Cards: don't depend on hover for usability. */
-@media (hover: hover) and (pointer: fine) {
-  .maces-card-hover {
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  /* CTAs */
+  .hero-actions,.maces-hero-actions{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    width:100%;
   }
-  .maces-card-hover:hover {
-    transform: translateY(-4px);
+  .hero-actions a,.maces-hero-actions a,
+  .hero-actions button,.maces-hero-actions button{
+    width:100%;
+    justify-content:center;
+  }
+
+  /* Preserve card styling, only change column count. */
+  .grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .grid-cols-3{grid-template-columns:1fr!important}
+
+  /* Phone mockup */
+  .iphone-mockup,.phone-mockup,.maces-device{
+    width:min(84vw,360px)!important;
+    margin-inline:auto;
+  }
+
+  /* Compact mobile menu */
+  #mobile-menu{
+    max-height:72vh;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Prevent fixed WhatsApp from covering content. */
+  footer{padding-bottom:5rem!important}
+}
+
+@media (max-width:560px){
+  .grid-cols-4,.grid-cols-3,.grid-cols-2{
+    grid-template-columns:1fr!important;
+  }
+
+  /* Don't make the original typography tiny. */
+  .hero-title,.maces-hero-title,.hero h1{
+    font-size:clamp(2.65rem,12vw,4rem)!important;
+    line-height:.96!important;
+  }
+
+  /* Preserve rounded card aesthetic. */
+  .rounded-2xl,.rounded-3xl{border-radius:12px}
+}
+
+@media (max-width:380px){
+  .hero-title,.maces-hero-title,.hero h1{
+    font-size:clamp(2.35rem,12vw,3.15rem)!important;
   }
 }
 
-/* Mobile first */
-@media (max-width: 767px) {
-  :root {
-    --maces-gutter: 1rem;
-    --maces-section-y: 4.5rem;
-  }
-
-  .container,
-  main > section > div,
-  section > div {
-    max-width: 100%;
-  }
-
-  /* Avoid desktop min-heights becoming giant mobile gaps. */
-  [class*="min-h-screen"] {
-    min-height: auto;
-  }
-
-  /* Hero */
-  .maces-hero-grid,
-  .hero-grid,
-  .hero-content-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .maces-hero-title,
-  .hero h1 {
-    font-size: clamp(2.55rem, 12vw, 4rem);
-    line-height: .96;
-  }
-
-  .maces-hero-actions,
-  .hero-actions {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: .75rem;
-  }
-
-  .maces-hero-actions a,
-  .hero-actions a,
-  .maces-hero-actions button,
-  .hero-actions button {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Grids collapse cleanly. */
-  .grid-cols-4,
-  .grid-cols-3 {
-    grid-template-columns: 1fr !important;
-  }
-
-  .grid-cols-2 {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Reduce oversized desktop spacing. */
-  .py-32, .py-28, .py-24 {
-    padding-top: 4rem !important;
-    padding-bottom: 4rem !important;
-  }
-
-  .px-12, .px-10, .px-8 {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-
-  /* iPhone / dashboard mockups */
-  .maces-device,
-  .iphone-mockup,
-  .phone-mockup {
-    width: min(82vw, 360px) !important;
-    max-width: 100%;
-    margin-inline: auto;
-  }
-
-  .maces-dashboard,
-  .dashboard-mockup {
-    width: 100% !important;
-    overflow: hidden;
-  }
-
-  /* Mobile menu should remain compact, not fullscreen. */
-  #mobile-menu {
-    max-height: min(70vh, 520px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Floating WhatsApp */
-  .maces-whatsapp-float {
-    right: max(14px, env(safe-area-inset-right));
-    bottom: max(14px, env(safe-area-inset-bottom));
-    width: 54px;
-    height: 54px;
-  }
-
-  /* Don't let fixed elements overlap form fields. */
-  footer {
-    padding-bottom: 6rem !important;
-  }
+@media (min-width:768px) and (max-width:1100px){
+  .grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 
-/* Small phones */
-@media (max-width: 380px) {
-  .maces-hero-title,
-  .hero h1 {
-    font-size: clamp(2.25rem, 12vw, 3rem);
-  }
-
-  .text-5xl { font-size: 2.25rem !important; }
-  .text-4xl { font-size: 2rem !important; }
-  .text-3xl { font-size: 1.7rem !important; }
-
-  .rounded-2xl,
-  .rounded-3xl {
-    border-radius: var(--maces-radius) !important;
-  }
+/* Touch devices shouldn't lose content because of hover-only interactions. */
+@media (hover:none){
+  .hover\:scale-105:hover,
+  .hover\:scale-110:hover,
+  .hover\:-translate-y-1:hover,
+  .hover\:-translate-y-2:hover{transform:none!important}
 }
 
-/* Tablets */
-@media (min-width: 768px) and (max-width: 1100px) {
-  :root {
-    --maces-gutter: clamp(1.25rem, 4vw, 2.5rem);
-  }
-
-  .grid-cols-4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-
-  .grid-cols-3 {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-
-  .maces-hero-title,
-  .hero h1 {
-    font-size: clamp(3.5rem, 7vw, 5rem);
-  }
-}
-
-/* Landscape phones */
-@media (max-width: 900px) and (orientation: landscape) {
-  .maces-hero,
-  .hero {
-    min-height: auto !important;
-    padding-top: 7rem !important;
-    padding-bottom: 3rem !important;
-  }
-}
-
-/* Very wide monitors: keep reading width comfortable. */
-@media (min-width: 1600px) {
-  .maces-readable {
-    max-width: 78ch;
-  }
-}
-
-/* Keyboard accessibility */
-:focus-visible {
-  outline: 2px solid #00F0FF;
-  outline-offset: 3px;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Devices that hover: visual enhancement only. */
-@media (hover: none) {
-  .hover\\:scale-105:hover,
-  .hover\\:scale-110:hover,
-  .hover\\:-translate-y-1:hover,
-  .hover\\:-translate-y-2:hover {
-    transform: none !important;
+/* Accessibility/performance only — no visual redesign. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
   }
 }
 </style>
@@ -823,28 +617,28 @@ header nav a {
       </div>
     </section>
 
-    <!-- SOCIAL PROOF WITHOUT FABRICATION -->
+    <!-- SOCIAL PROOF — FICTITIOUS DEMO -->
     <section class="px-5 py-24 sm:px-8 lg:px-12">
       <div class="mx-auto max-w-7xl">
         <div class="grid gap-6 lg:grid-cols-12">
           <div class="lg:col-span-5">
-            <div class="eyebrow">Confianza</div>
+            <div class="eyebrow">Caso ilustrativo</div>
             <h2 class="mt-4 text-5xl font-bold leading-[.94] tracking-[-.06em] sm:text-6xl">
-              Resultados que se puedan comprobar.
+              Así puede sentirse la automatización.
             </h2>
             <p class="mt-6 leading-7 text-slate-400">
-              La prueba social debe mostrar clientes y métricas reales. Esta sección queda preparada para incorporar testimonios verificables de negocios en Barinas.
+              Ejemplo ficticio de cómo podría verse la experiencia de un negocio que automatiza su atención y pedidos con Macés.
             </p>
           </div>
           <div class="glass-card lg:col-span-7 p-8 sm:p-10">
             <div class="flex items-start gap-5">
               <div class="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-300">★</div>
               <div>
-                <div class="text-sm font-bold text-slate-300">Testimonio real</div>
-                <p class="mt-4 text-lg leading-8 text-slate-500">
-                  Espacio reservado para una experiencia real de un cliente: resultado concreto, contexto y nombre/cargo con autorización.
+                <div class="text-sm font-bold text-cyan-300">Agua Lite <span class="ml-2 text-[10px] uppercase tracking-[.16em] text-slate-500">Ejemplo ficticio</span></div>
+                <p class="mt-4 text-lg leading-8 text-slate-300">
+                  “Antes perdíamos tiempo respondiendo las mismas preguntas y tomando pedidos manualmente. Con un sistema automatizado, nuestros clientes pueden recibir información y avanzar con su pedido mucho más rápido.”
                 </p>
-                <div class="mt-6 text-xs uppercase tracking-[.18em] text-slate-700">Agregar caso verificable</div>
+                <div class="mt-6 text-xs uppercase tracking-[.18em] text-slate-500">Caso demostrativo · No corresponde a un cliente real</div>
               </div>
             </div>
           </div>
@@ -1013,7 +807,7 @@ header nav a {
     const MACES_SUPABASE_URL = 'https://sgkowzmfmedldznnnygs.supabase.co';
     const MACES_SUPABASE_KEY = 'sb_publishable_eAJ0XteDHSj6yLkSfKagQQ_AL_EDSvi';
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -1125,20 +919,5 @@ header nav a {
       });
     });
   </script>
-
-<script id="maces-mobile-nav-200">
-document.addEventListener('DOMContentLoaded', () => {
-  const menu = document.getElementById('mobile-menu');
-  if (!menu) return;
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.add('hidden');
-      const toggle = document.querySelector('[aria-controls="mobile-menu"]');
-      if (toggle) toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-});
-</script>
-
 </body>
 </html>
