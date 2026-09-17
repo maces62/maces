@@ -384,6 +384,29 @@ input,textarea,select{font-size:16px}
 }
 </style>
 
+
+<style id="maces-final-scroll-fix">
+/* Never let entrance animation hide the actual content on touch/mobile. */
+@media (max-width: 767px) {
+  .section-reveal,
+  .solution-card,
+  .glass-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
+/* If a browser changes viewport height while scrolling, keep the page stable. */
+@media (min-width: 768px) {
+  .section-reveal,
+  .solution-card,
+  .glass-card {
+    will-change: transform, opacity;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -996,5 +1019,44 @@ input,textarea,select{font-size:16px}
       });
     });
   </script>
+
+<script id="maces-final-scroll-runtime">
+window.addEventListener("load", () => {
+  if (typeof ScrollTrigger !== "undefined") {
+    // Give mobile browser UI/fonts/images a moment to settle before measuring positions.
+    requestAnimationFrame(() => {
+      setTimeout(() => ScrollTrigger.refresh(), 120);
+    });
+
+    window.addEventListener("resize", () => {
+      clearTimeout(window.__macesResizeTimer);
+      window.__macesResizeTimer = setTimeout(() => ScrollTrigger.refresh(), 180);
+    }, { passive: true });
+
+    window.addEventListener("orientationchange", () => {
+      setTimeout(() => ScrollTrigger.refresh(), 350);
+    }, { passive: true });
+  }
+});
+</script>
+
+
+<script id="maces-final-menu-close">
+document.addEventListener("DOMContentLoaded", () => {
+  const menu = document.getElementById("mobile-menu");
+  const toggle = document.getElementById("menu-toggle");
+  if (!menu) return;
+
+  menu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      toggle?.setAttribute("aria-expanded", "false");
+      const icon = toggle?.querySelector("span");
+      if (icon) icon.textContent = "☰";
+    });
+  });
+});
+</script>
+
 </body>
 </html>
