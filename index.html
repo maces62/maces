@@ -407,6 +407,33 @@ input,textarea,select{font-size:16px}
 }
 </style>
 
+<style id="maces-mobile-render-fix">
+  /* Evita capas compositoras problemáticas durante el scroll en teléfonos. */
+  @media (max-width: 767px), (pointer: coarse) {
+    html, body {
+      background-color: #0B0E14;
+      -webkit-overflow-scrolling: auto;
+    }
+
+    .section-reveal,
+    .solution-card,
+    .glass-card,
+    .hero-reveal {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      animation: none !important;
+      will-change: auto !important;
+    }
+
+    .glass-card,
+    .nav-glass {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+</style>
+
 </head>
 
 <body>
@@ -935,7 +962,13 @@ input,textarea,select{font-size:16px}
         });
       });
 
-      if (!reduced && typeof gsap !== "undefined") {
+      // En móviles, evitar animaciones de entrada/ScrollTrigger:
+      // algunos navegadores móviles dejan capas negras o no repintan el contenido
+      // mientras se hace scroll. El contenido debe estar visible desde el inicio.
+      const isMobileViewport = window.matchMedia("(max-width: 767px)").matches ||
+        window.matchMedia("(pointer: coarse)").matches;
+
+      if (!reduced && !isMobileViewport && typeof gsap !== "undefined") {
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.from(".hero-reveal", {
